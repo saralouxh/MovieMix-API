@@ -11,17 +11,26 @@ class PlaylistsController < ApplicationController
   # POST /playlists/:id/add_movie
   def add_movie
     @playlist = Playlist.find(params[:id])
-    @movie = Movie.find(params[:movie_id])
+    movie_data = params.permit(:title, :image) # Permit only title and image
     
-    unless @playlist.movies.include?(@movie)
-      @playlist.movies << @movie
+    # Check if the 'image' and 'title' attributes are present in the incoming data
+    if movie_data['image'].present?
+      # Create a new Movie record using the received data
+      @movie = Movie.create(
+        title: movie_data['title'],
+        image: movie_data['image']
+      )
+  
+      unless @playlist.movies.include?(@movie)
+        @playlist.movies << @movie
+      end
     end
-
+  
     payload = {
       playlist: @playlist,
       movies: @playlist.movies
     }
-
+  
     render json: payload
   end
 
@@ -34,7 +43,12 @@ class PlaylistsController < ApplicationController
       @playlist.movies.delete(@movie)
     end
 
-    render json: @playlist
+    payload = {
+      playlist: @playlist,
+      movies: @playlist.movies
+    }
+  
+    render json: payload
   end
 
   # GET /playlists
