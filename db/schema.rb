@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_234007) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_13_020500) do
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.string "image"
@@ -33,6 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_234007) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "playlist_movies", "movies"
-  add_foreign_key "playlist_movies", "playlists"
+  add_foreign_key "playlist_movies", "movies", on_delete: :cascade
+  add_foreign_key "playlist_movies", "playlists", on_delete: :cascade
 end
