@@ -27,7 +27,7 @@ production:
   url: <%= ENV['DATABASE_URL'] %>
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 }
-  timeout: 5000
+  # timeout: 5000
   # database: moviemix_database_production
   # username: moviemix_database_user
   # password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
