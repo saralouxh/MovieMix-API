@@ -6,6 +6,7 @@
 #
 default: &default
   adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
@@ -21,5 +22,9 @@ test:
   database: movie-mix-api_test
 
 production:
-  adapter: postgresql
+  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  database: moviemix_database_production
+  username: moviemix_database_user
+  password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
