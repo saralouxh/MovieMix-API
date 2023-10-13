@@ -85,6 +85,7 @@ class PlaylistsController < ApplicationController
 
   # DELETE /playlists/1
   def destroy
+    @playlist = Playlist.find(params[:id])
     @playlist.destroy
   end
 
