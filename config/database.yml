@@ -21,8 +21,5 @@ test:
   database: movie-mix-api_test
 
 production:
-  <<: *default
+  adapter: postgresql
   url: <%= ENV['DATABASE_URL'] %>
-  database: movie-mix-api_production
-  username: movie-mix-api
-  password: <%= ENV['MOVIE-MIX-API_DATABASE_PASSWORD'] %>
