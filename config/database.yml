@@ -23,6 +23,3 @@ test:
 production:
   adapter: postgresql
   url: <%= ENV['DATABASE_URL'] %>
-  database: moviemix_database
-  username: moviemix_database_user
-  password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
