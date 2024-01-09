@@ -169,7 +169,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
-  pg (~> 1.2)
+  pg
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.6)
